@@ -6,12 +6,17 @@ variable "aws_ami" {
     default = "ami-09c813fb71547fc4f"
   
 }
-variable "type" {
-    default = "t2.micro"
+variable "instance_type" {
+    default = {
+    frontend ="t2.micro"
+    mysql="t2.micro"
+    catalogue="t3.micro"
+    }
+
   
 }
 variable "ec2_tags" {
-    type=list(string)
+        type=list(string)
     default = ["frontend","mysql","catalogue"]
   
 }

@@ -23,11 +23,11 @@ resource "aws_security_group" "allow-all" {
 }
 
 resource "aws_instance" "instances" {
-    count =3
+    for_each = toset(var.ec2_tags)
     ami = var.aws_ami
-    instance_type = var.type 
+    instance_type = var.instance_type[each.key] 
     vpc_security_group_ids =[aws_security_group.allow-all.id]
     tags ={
-        Name=var.ec2_tags[count.index]
+        Name=each.key
     }
 }
