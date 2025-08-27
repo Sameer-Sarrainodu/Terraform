@@ -27,7 +27,7 @@ resource "aws_instance" "macron" {
     instance_type = "t2.micro"
     vpc_security_group_ids = [aws_security_group.allow-all.id]
     tags = {
-      Name ="macron"
+      Name ="macronmodi"
     }
 
 
